@@ -85,6 +85,49 @@
 	</div>
 	<script>
 	  // your solution here
+    var pan= document.getElementById('pan-box');
+var pa = new Hammer(pan);
+pa.on("panleft panright", function(ev) {
+    pan.textContent = ev.type +" gesture detected.";
+});
+    
+var myElement = document.getElementById('rotate-box');
+var mc = new Hammer.Manager(myElement);
+var rotate = new Hammer.Rotate();
+mc.add(rotate);
+mc.on("rotate", function(ev) {
+    myElement.textContent += ev.type +" ";
+});
+
+var pinche = document.getElementById('pinch-box');
+var pi = new Hammer.Manager(pinche);
+var pinch = new Hammer.Pinch();
+pi.add(pinch);
+pi.on("pinch", function(ev) {
+    pinche.textContent += ev.type +" ";
+});
+
+var tap = document.getElementById('tap-box');
+var tp = new Hammer.Manager(tap);
+tp.add( new Hammer.Tap({ event: 'singletap' }) );
+tp.get('singletap');
+tp.on("singletap doubletap", function(ev) {
+    tap.textContent += ev.type +" ";
+});
+    
+var press= document.getElementById('press-box');
+var pr = new Hammer(press);
+pr.on("press", function(ev) {
+    press.textContent = ev.type +" gesture detected.";
+});
+    
+    
+    
+ var swipe= document.getElementById('swipe-box');
+var sw = new Hammer(swipe);
+sw.on("swipeleft, swiperight", function(ev) {
+    swipe.textContent = ev.type +" gesture detected.";
+});
   </script>
 </body>
 </html>
